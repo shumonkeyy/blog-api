@@ -17,7 +17,15 @@ app.use(express.json());
 
 require("dotenv").config();
 const port = process.env.PORT;
+
 const cors = require("cors");
+app.use(
+  cors({
+    origin: ["https://blog-post-azure.vercel.app/"], // your React app domain
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 const connectDB = require("./config/dbConnection");
 connectDB();
@@ -27,14 +35,6 @@ const blog = require("./routes/blog");
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
-
-app.use(
-  cors({
-    origin: ["https://blog-post-azure.vercel.app/"], // your React app domain
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
 
 app.use("/blog", blog);
 
