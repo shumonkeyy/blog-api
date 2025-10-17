@@ -21,7 +21,7 @@ const port = process.env.PORT;
 const cors = require("cors");
 app.use(
   cors({
-    origin: ["https://blog-post-azure.vercel.app/"], // your React app domain
+    origin: ["https://blog-post-azure.vercel.app"], // your React app domain
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
